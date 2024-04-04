@@ -1,9 +1,27 @@
+/* Start Global Rules */
 * {
     margin: 0;
     padding: 0;
-    list-style: none;
+    --webkit-box-sizing: border-box;
+    --moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+body {
+    font-family: "Space Grotesk", sans-serif;
+    background-color: #111827;
+    color: #fff;
+    width: 100%;
+    perspective: 700px;
+}
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+ul {
+    list-style: none;
+}
+/* End Global Rules */
+
 /* Start Componants */
 .padding-section {
     padding-top: 100px;
@@ -24,23 +42,13 @@ h2 span {
     text-align: center;
     border-radius: 0.25em;
     white-space: nowrap;
-
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
     transition-property: visibility;
     transition-delay: 0s;
 }
-/* End Show text when hover */
-body {
-    font-family: "Space Grotesk", sans-serif;
-    background-color: #111827;
-    color: #fff;
-    width: 100%;
-}
-html {
-    scroll-behavior: smooth;
-}
+ /* End Show text when hover */
 /* End Componants */
 /* Start Header */
 .header {
@@ -48,40 +56,47 @@ html {
     position: relative;
     z-index: 111;
     padding: 25px 40px;
+    transition: all 0.3s;
 }
-.container {
-    width: 94%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+.sticky {
+    position: sticky;
+    top: 0;
+    background: #192337;
+    padding: 18px 40px;
+  }
+  .sticky + .home {
+    padding-top: 150px;
+  }
 .nav {
-    overflow: hidden;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.nav .logo {
-    float: left;
-    padding: 0 12px;
+@media (min-width: 992px) {
+    .nav .logo {
+        margin-left: -89px;
+    }
 }
-.nav .logo img {
-    float: left;
+@media (min-width: 1200px) {
+    .nav .logo {
+        margin-left: 0;
+    }
 }
 .nav .logo span {
-    float: right;
+    /* float: right; */
     line-height: 3;
     color: #00c4ff;
     font-size: 20px;
 }
 .nav .list {
-    float: left;
-    width: 70%;
-    margin: auto;
+    /* margin: auto; */
+    display: inline-flex;
     line-height: 2.6;
-    padding: 0 12px;
+    margin: 0;
+    padding: 0;
 }
 .nav .list li  {
-    display: inline-block;
     text-align: center;
     padding: 10px 10px;
     text-transform: capitalize;
@@ -93,27 +108,10 @@ html {
     text-decoration: none;
     transition: 0.5s;
 }
-/* .list li a.active {
-    border-bottom: 2px solid #4342F5;
-} */
 .nav .list li a:hover {
     color: #4342F5;
 }
-/* .nav .list li a::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #4342F5;
-    margin-top: -11px;
-    transition: 0.5s;
-} */
-.nav .list li a:hover:after {
-    width: 100%;
-}
 .nav .btn {
-    /* float: right; */
-    margin-top: 10px;
     display: inline-block;
     cursor: pointer;
 }
@@ -125,11 +123,48 @@ html {
     border-radius: 25px;
     font-size: 15px;
     font-weight: 500;
+    color: #fff;
+    text-decoration: none;
     transition: 0.5s;
 }
 .nav .btn .login:hover {
     background-color: #4342F5;
 }
+/* Start toggle-btn */
+.nav .toggle-btn {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 21px;
+    cursor: pointer;
+}
+@media (min-width: 768px) {
+    .nav .toggle-btn {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .nav .list {
+        display: none;
+    } 
+    .nav .toggle-btn+.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(25, 35, 55, 1);
+    }
+    .nav .logo {
+        display: flex;
+    }
+}
+.close {
+    display: none
+}
+/* End toggle-btn */
 /* End Header */
 /* Start Home */
 .home {
@@ -138,19 +173,16 @@ html {
     position: relative;
     transform-origin: bottom;
     padding-top: 40px;
-    margin-top: 2%;
-    height: 75%;
-    clear: both;
+    /* margin-top: 2%; */
+    height: 100%;
+    padding-left: 20px;
 }
 .home .caption {
-    /* position: absolute; */
-    /* width: 35%; */
-    /* top: 50%; */
-    /* left: 6%; */
-    /* transform: translateY(50%); */
-    float: left; 
-    width: calc((100% - 40px) / 2);
-    padding-left: 60px;
+    /* position: absolute;
+    top: 16%;
+    width: 50%; */
+    margin-top: 9%;
+    padding-right: 25%;
 }
 .home .caption h2 {
     font-size: 40px;
@@ -185,11 +217,9 @@ html {
 }
 .home .home-img {
     position: absolute;
-    top: 3%;
+    /* top: 8%; */
     right: 6%;
-    width: calc((100% - 40px) / 2);
-    /* float: left;  */
-    /* margin-top: -25px; */
+    width: 50%;
 }
 .home .home-img img {
     max-width: 100%;
@@ -201,28 +231,31 @@ html {
 /* End Home */
 /* Start About */
 .about {
-    clear: both;
     position: relative;
-    overflow: auto;
+    padding-left: 88px;
 }
-.about-us .lift-side {
-    float: left; 
-    width: calc((85% - 90px) / 2);
-    margin-left: 90px;
+@media (min-width: 768px) {
+    .about {
+        padding-right: 40px;
+    }
+}
+.lift-side {
     position: relative;
 }
-.about-us .lift-side img {
+.lift-side img {
     max-width: 100%;
     height: 360px;
     display: block;
 }
 .about-us .right-side {
-    float: right;
-    width: calc((100% - 30px) / 2);
-    padding-left: 10px;
-    padding-right: 135px;
+    margin-left: 25px;
 }
-.about-us .lift-side::before {
+@media (max-width: 991px) {
+.about-us .right-side {
+    padding-top: 90px;
+}
+}
+.lift-side::before {
     content: "";
     position: absolute;
     background-color: #172033;
@@ -232,7 +265,7 @@ html {
     top: -11%;
     left: -9%;
 }
-.about-us .lift-side::after {
+.lift-side::after {
     content: "";
     position: absolute;
     background-color: #172033;
@@ -265,11 +298,13 @@ html {
 }
 .right-side .right-about {
     display: block;
+    padding-left: 0;
+    font-weight: 500;
 }
 .right-side .right-about li {
     float: left;
-    width: calc((100% - 30px) / 2);
-    margin-bottom: 20px;
+    width: 50%;
+    margin-bottom: 23px;
 }
 .right-side .right-about li i {
     padding-right: 8px;
@@ -279,10 +314,9 @@ html {
 /* Start Services */
 .services {
     clear: both;
-    overflow: auto;
 }
 .services .service {
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .service h2 {
     font-size: 32px;
@@ -295,9 +329,9 @@ html {
     border-radius: 10px;
     padding: 60px 30px 30px 30px;
     margin-bottom: 30px;
-    float: left;
+    /* float: left;
     width: calc((100% - 100px) / 3);
-    margin-right: 25px;
+    margin-right: 25px; */
     position: relative;
 }
 .service .service-card::before {
@@ -346,8 +380,6 @@ html {
 /* End Services */
 /* Start Counter */
 .counter-up {
-    clear: both;
-    overflow: auto;
     position: relative;
     z-index: 1;
 }
@@ -376,14 +408,14 @@ html {
     z-index: -1;
     opacity: 0.3;
 }
-.counter-pro {
-    margin-left: 60px;
+.counter-up .row {
+    margin-left: 20px;
 }
-.counter-pro .title {
+.counter-title .title {
     font-size: 30px;
     margin-bottom: 40px;
 }
-.counter-pro a {
+.counter-title a {
     text-decoration: none;
     display: inline-block;
     padding: 11px 22px;
@@ -396,19 +428,16 @@ html {
     transition: 0.5s;
     margin-bottom: 20px;
 }
-.counter-pro a:hover {
+.counter-title a:hover {
     background: rgba(217, 217, 217, 0.06);
     border: 1px solid rgba(151, 150, 233, 0.2);
 }
-.counter-pro .count-box {
+.count-box {
     text-align: center;
     background: #E2E2FC;
     border-radius: 4px;
     padding: 40px 10px 30px;
     margin-bottom: 30px;
-    float: left;
-    width: calc((100% - 50px) / 2);
-    margin-right: 25px;
     transition: 0.5s;
 }
 .count-box .number h3 {
@@ -451,19 +480,19 @@ html {
 /* End Counter */
 /* Start Pricing */
 .pricing {
-    clear: both;
-    overflow: auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
 }
-.pricing .row {
-    margin-left: 60px;
+.pricing .pricing-plan {
+    margin-left: 20px;
     text-align: center;
 }
-.pricing .row h2 {
+.pricing .pricing-plan h2 {
     font-size: 32px;
     line-height: 40px;
     margin-bottom: 70px;
 }
-.pricing .row .pricing-tab {
+.pricing .pricing-plan .pricing-tab {
     margin-bottom: 30px;
 }
 .pricing-tab-title, 
@@ -516,9 +545,6 @@ html {
     border-radius: 10px;
     padding: 50px 30px;
     margin-bottom: 30px;
-    float: left;
-    width: calc((100% - 100px) / 4);
-    margin-right: 25px;
     position: relative;
 }
 .pricing .plan::before {
@@ -574,6 +600,7 @@ html {
 }
 .pricing .plan .plan-list {
     line-height: 31px;
+    padding: 0;
 }
 .pricing .plan .plan-list li:not(:last-child) {
     border-bottom: 1px solid rgba(151, 150, 233, 0.2);
@@ -593,8 +620,6 @@ html {
 /* End Pricing */
 /* Start Tools */
 .tools {
-    clear: both;
-    overflow: auto;
    position: relative;
    margin-top: 100px; 
 }
@@ -614,7 +639,7 @@ html {
     opacity: 0.3;
 }
 .tools .tool{
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .tool h2 {
     font-size: 32px;
@@ -622,11 +647,8 @@ html {
     margin-bottom: 70px;
 }
 .tool .tool-box {
-    float: left;
-    width: calc((100% - 135px) / 5);
-    margin-right: 25px;
     background: rgba(255, 255, 255, 0.04);
-    padding: 30px;
+    padding: 28px;
     border-radius: 10px;
     text-align: center;
     margin-bottom: 30px;
@@ -661,7 +683,7 @@ html {
     clear: both;
 }
 .video-container {
-    margin-left: 60px;
+    margin-left: 20px;
     text-align: center;
 }
 .video-container h2 {
@@ -675,11 +697,8 @@ html {
 }
 /* End Video */
 /* Start Customers */
-.customers {
-    clear: both;
-}
 .customers .our-costomers {
-    margin-left: 60px;
+    margin-left: 20px;
     position: relative;
 }
 .customers .our-costomers h2 {
@@ -696,6 +715,7 @@ html {
     margin: 0;
     right: 0;
     top: 0px;
+    height: 0;
 }
 .our-costomers .dots li {
     position: relative;
@@ -706,7 +726,7 @@ html {
     padding: 0;
     cursor: pointer;
 }
-.our-costomers .dots li#circle {
+.circle {
     border: 1px solid #7B3EFF;
     border-radius: 50%;
 }
@@ -720,16 +740,6 @@ html {
     top: 4px;
     left: 4px;
 }
-/* Start show text */
-.our-costomers .tooltiptext {
-    top: 135%;
-    right: 65%;
-}
-.our-costomers .dots:hover .tooltiptext {
-    visibility: visible;
-    transition-delay: 0.3s;
-}
-/* End show text */
 .our-costomers .clients {
     position: relative;
     width: 60%;
@@ -796,7 +806,7 @@ html {
 /* End Customers */
 /* Start Questions */
 .questions {
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .questions h2 {
     font-size: 32px;
@@ -847,11 +857,8 @@ html {
 }
 /* End Questions */
 /* Start Team */
-.team {
-    overflow: auto;
-}
 .team .our-team {
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .team .our-team h2 {
     font-size: 32px;
@@ -860,9 +867,6 @@ html {
     text-align: center;
 } 
 .our-team .team-member {
-    float: left;
-    width: calc((100% - 100px) / 4);
-    margin-right: 25px;
     position: relative;
     margin-bottom: 30px;
 }
@@ -938,12 +942,8 @@ html {
 }
 /* End Team */
 /* Start partner */
-.partner {
-    clear: both;
-    /* overflow: auto; */
-}
 .partner .partner-area {
-    margin-left: 60px;
+    margin-left: 20px;
     background: #192337;
     padding: 50px;
     border-radius: 10px;
@@ -952,22 +952,25 @@ html {
     z-index: 99;
 }
 .partner .partner-area .list-partner {
-    position: relative;
-    display: block;
-    overflow: hidden;
+   float: left;
 }
 .partner .partner-area img {
-    float: left;
-    width: calc((100% - 42px) / 5);
+    /* float: left; */
+    /* width: calc((100% - 42px) / 5); */
     padding-right: 60px;
     height: 45px;
-    display: block;
+    display: inline-block;
     opacity: 0.7;
     transition: 0.3s;
     cursor: pointer;
 }
 .partner .partner-area img:hover {
     opacity: 1;
+}
+.partner-area .carousel-item {
+    white-space: nowrap;
+    overflow: hidden;
+    /* display: inline-flex; */
 }
 /* End partner */
 /* Start Cta-Area */
@@ -977,6 +980,7 @@ html {
     background-size: cover;
     background-color: #6C4EFF;
     padding-top: 145px;
+    width: 100vw
 }
 .cta-area {
     text-align: center;
@@ -1016,18 +1020,18 @@ html {
 }
 /* End Cta-Area */
 /* Start Contact Form */
+.contact {
+    padding-top: 100px;
+    padding-bottom: 30px;
+}
 .contact .contact-info-area {
-    margin-left: 60px;
+    margin-left: 20px;
+    padding-bottom: 100px;
 }
 .contact .contact-info-area h2 {
     font-size: 32px;
     line-height: 40px;
     margin-bottom: 70px;
-}
-.contact-info {
-    float: left;
-    width: calc((100% - 200px) / 2);
-    padding-right: 62px;
 }
 .contact-info-area .contact-info p {
     margin-bottom: 16px;
@@ -1040,6 +1044,7 @@ html {
 .contact-info-area .social-option {
     margin-top: 30px;
     margin-bottom: 16px;
+    padding-left: 0;
 }
 .contact-info-area .social-option li {
     display: inline-block;
@@ -1065,14 +1070,11 @@ html {
     margin-right: 0;
 }
 .contact-form {
-    float: left;
-    width: calc((100% - 44px) / 2);
     padding: 40px;
     margin-left: 80px;
     background: #192337;
     border-radius: 10px;
     position: relative;
-    top: -100px;
 }
 form input, form textarea {
     border: 1px solid #476180;
@@ -1142,21 +1144,15 @@ input[type=text]:focus, input[type=email]:focus {
 }
 /* End Contact Form */
 /* Start Footer */
-.contact {
-    padding-top: 100px;
-    padding-bottom: 30px;
-}
 .footer {
-    margin-left: 60px;
+    margin-left: 20px;
 }
 .footer .single-footer {
     margin-bottom: 40px;
-    float: left;
-    width: calc((100% - 100px) / 5);
-    margin-right: 57px;
 }
 .about-footer {
     margin-top: -15px;
+    padding-right: 50px;
 }
 .about-footer .logo {
     margin-left: -12px;
@@ -1178,6 +1174,9 @@ input[type=text]:focus, input[type=email]:focus {
     font-size: 22px;
     margin-bottom: 25px;
 }
+.single-footer ul {
+    padding-left: 0;
+}
 .single-footer ul li {
     line-height: 32px;
     margin-right: 2px;
@@ -1186,10 +1185,6 @@ input[type=text]:focus, input[type=email]:focus {
     text-decoration: none;
     color: #fff;
     text-transform: capitalize;
-}
-#Newsletter {
-    width: 25%;
-    padding: 0 12px;
 }
 .newsletter-area form {
     position: relative;
@@ -1210,7 +1205,6 @@ input[type=text]:focus, input[type=email]:focus {
     background-clip: text;
 }
  .footer .copyright {
-    clear: both;
     clear: both;
     border-top: 1px solid rgb(255, 255, 255, 0.09);
     padding-top: 30px;
