@@ -11,7 +11,6 @@ body {
     background-color: #111827;
     color: #fff;
     width: 100%;
-    perspective: 700px;
 }
 html {
     scroll-behavior: smooth;
@@ -59,14 +58,14 @@ h2 span {
     transition: all 0.3s;
 }
 .sticky {
-    position: sticky;
+    position: fixed;
     top: 0;
     background: #192337;
     padding: 18px 40px;
   }
-  .sticky + .home {
-    padding-top: 150px;
-  }
+  /* .sticky + .home {
+    padding-top: 120px;
+  } */
 .nav {
     text-align: center;
     display: flex;
@@ -81,6 +80,11 @@ h2 span {
 @media (min-width: 1200px) {
     .nav .logo {
         margin-left: 0;
+    } 
+}
+@media (max-width: 650px) {
+    .nav .logo {
+        margin-left: -27px;
     }
 }
 .nav .logo span {
@@ -175,14 +179,23 @@ h2 span {
     padding-top: 40px;
     /* margin-top: 2%; */
     height: 100%;
+    width: 100%;
     padding-left: 20px;
 }
+@media (max-width: 767px) {
+    .home {
+        padding-top: 0;
+    }
+}
 .home .caption {
-    /* position: absolute;
-    top: 16%;
-    width: 50%; */
     margin-top: 9%;
     padding-right: 25%;
+}
+@media (max-width: 767px) {
+    .home .caption {
+        padding-right: 0;
+        width: 100%;
+    }
 }
 .home .caption h2 {
     font-size: 40px;
@@ -208,6 +221,7 @@ h2 span {
 .home .caption .btn1 {
     background-color: #4342F5;
     margin-right: 15px;
+    margin-bottom: 15px;
 }
 .home .caption .btn1:hover {
     background: rgba(217, 217, 217, 0.06);
@@ -305,6 +319,11 @@ h2 span {
     float: left;
     width: 50%;
     margin-bottom: 23px;
+}
+@media (max-width: 650px) {
+    .right-side .right-about li {
+        width: 100%;
+    }
 }
 .right-side .right-about li i {
     padding-right: 8px;
