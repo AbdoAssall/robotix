@@ -1,6 +1,8 @@
 # Robotix
 
-First project ai portofolio
+First project AI Portofolio
 
-Technologies Used:
-- Frontend: HTML, CSS, JavaScript, Bootstrap
+website link 👉 https://abdoassall.github.io/robotix/
+
+#### Technologies Used: Frontend: HTML, CSS, JavaScript, Bootstrap
+
