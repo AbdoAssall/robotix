@@ -182,7 +182,7 @@ h2 span {
     width: 100%;
     padding-left: 20px;
 }
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     .home {
         padding-top: 0;
         height: auto;
@@ -192,7 +192,7 @@ h2 span {
     margin-top: 9%;
     padding-right: 25%;
 }
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     .home .caption {
         padding-right: 0;
         width: 100%;
