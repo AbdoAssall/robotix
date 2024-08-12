@@ -185,6 +185,7 @@ h2 span {
 @media (max-width: 767px) {
     .home {
         padding-top: 0;
+        height: auto;
     }
 }
 .home .caption {
@@ -248,9 +249,16 @@ h2 span {
     position: relative;
     padding-left: 88px;
 }
+@media (max-width: 767px) {
+    .about {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+}
 @media (min-width: 768px) {
     .about {
-        padding-right: 40px;
+        /* padding-right: 40px; */
     }
 }
 .lift-side {
@@ -288,6 +296,14 @@ h2 span {
     z-index: -1;
     bottom: -7%;
     right: -7%;
+}
+@media (max-width: 768px) {
+    .lift-side::before {
+        display: none;
+    }
+    .lift-side::after {
+        display: none;
+    }
 }
 .about-us .right-side h2 {
     font-size: 32px;
@@ -501,6 +517,11 @@ h2 span {
 .pricing {
     padding-top: 50px;
     padding-bottom: 100px;
+}
+@media (max-width: 767px) {
+    .pricing {
+        padding-bottom: 0;
+    }
 }
 .pricing .pricing-plan {
     margin-left: 20px;
@@ -827,6 +848,12 @@ h2 span {
 .questions {
     margin-left: 20px;
 }
+@media (max-width: 767px) {
+    .question.padding-section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
 .questions h2 {
     font-size: 32px;
     line-height: 40px;
@@ -844,6 +871,11 @@ h2 span {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+@media (max-width: 767px) {
+    .ask-questions details {
+        margin-bottom: 15px;
+    }
 }
 .ask-questions summary {
     display: flex;
@@ -895,6 +927,7 @@ h2 span {
     border-radius: 10px;
     height: 307px;
     opacity: 0.9;
+    object-fit: cover;
 }
 .team-member .team-content {
     background-color: rgba(217, 217, 217, 0.2);
@@ -978,6 +1011,7 @@ h2 span {
     /* width: calc((100% - 42px) / 5); */
     padding-right: 60px;
     height: 45px;
+    width: auto;
     display: inline-block;
     opacity: 0.7;
     transition: 0.3s;
@@ -1094,6 +1128,12 @@ h2 span {
     background: #192337;
     border-radius: 10px;
     position: relative;
+}
+@media (max-width: 767px) {
+    .contact-form {
+        margin-left: 0;
+        margin-top: 20px;
+    }
 }
 form input, form textarea {
     border: 1px solid #476180;

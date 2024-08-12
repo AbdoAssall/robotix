@@ -2,8 +2,8 @@
 
 const showMenu = (toggleId, listId) => {
   var toggle = document.getElementById(toggleId),
-    navb = document.getElementById(listId),
-    navlink = document.getElementsByClassName("scroll-link")
+    navb = document.getElementById(listId)
+    // navlink = document.getElementsByClassName("scroll-link")
 
   if (toggle && navb) {
     toggle.addEventListener("click", () => {
@@ -13,6 +13,7 @@ const showMenu = (toggleId, listId) => {
   }
 };
 showMenu('toggle-btn', 'list');
+
 $(".scroll-link").click(function (){
   $(".list").removeClass("show");
 })
