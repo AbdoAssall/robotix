@@ -1,6 +1,8 @@
 # Robotix
 
-First project AI Portofolio
+First project 
+
+AI Writer & Tech Startup Landing Page
 
 website link 👉 https://abdoassall.github.io/robotix/
 
